@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import Doctor from "./page/Doctor";
+import Customer from "./page/Customer";
+
+import { Button } from "@mui/material";
 
 function App() {
+  const [isDoctor, setDoctor] = useState(false);
+  const [showBtn, setShowBtn] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showBtn ? (
+        <div className="flex h-screen justify-center items-center gap-2">
+          <Button
+            variant="contained"
+            onClick={() => {
+              setDoctor(true);
+              setShowBtn(false);
+            }}
+          >
+            Doctor
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              setDoctor(true);
+              setShowBtn(false);
+            }}
+          >
+            Customer
+          </Button>
+        </div>
+      ) : (
+        <div>{isDoctor ? <Doctor></Doctor> : <Customer></Customer>}</div>
+      )}
     </div>
   );
 }
